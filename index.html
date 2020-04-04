@@ -164,9 +164,10 @@
 
 	}
 	.tip span {
-		margin: 0 30px;
 		position: absolute;
 		top: 530px;
+		left: 60px;
+		right: 60px;
 		font-size: 35px;
 		color: #383838;
 	}
@@ -197,20 +198,25 @@
 		<div class="plate"></div>
 	</div>
 	
+	你也不用在意我说的话啦，一时惊讶，就说出来了。但最终还是被你的声音迷上，
 	<div class="tip">
 		<span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日快乐呀，小奈奈。</br>
-			你正是青春年华的时期，一定要快快乐乐的。也不用去在乎别人说什么。</br>
+			你正是青春年华的时期，一定要快快乐乐。也不用去在乎别人说什么。</br>
 			我童年时期也很在意别人的眼光，后来慢慢长大发现做自己就好啦，自己喜欢怎样由自己说了算！</br>
-			你的声音真的好听，你也不用在意我说的话啦，好听就完事了。</br>
-			和你聊天也很开心的，先本想听你声音睡觉，后来发现越听越精神了。</br>
-			我要是和你同年龄一定要和你成为最好的好朋友。</br>
+			和你聊天也很开心，先本想听你声音睡觉，后来发现越听越精神了。</br>
+			你的声音真的好听，喜欢听你说话，听你唱歌。</br>
+			奈奈的歌声简直就是天籁，太美妙了，超喜欢这个声音的呢！</br>
+			真希望我能回到你这个年纪。
 		</span>
 	</div>
 
 	<div style="display:none">
 		<div class="shape">奈奈最棒</div>
 		<div class="shape">生日快乐</div>
+		<div class="shape">喜欢奈奈</div>
+		<div class="shape">喜欢奈奈</div>
+		<div class="shape">喜欢奈奈</div>
 		<div class="shape">奈奈最棒</div>
 		<div class="shape">生日快乐</div>
 		<div class="shape">奈奈最棒</div>
@@ -264,9 +270,9 @@
 				var x = getRandom(canvas.width/2 , canvas.width*4/5);
 				var y = getRandom(50 , 200);
 
-				var round = Math.round(Math.random()*10)
+				//var round = Math.round(Math.random()*10)
 				
-				if(round>4){
+				if(random){
 					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
 					bigbooms.push(bigboom)
 				} else {
@@ -373,7 +379,7 @@
 				ctx.restore();
 			},
 			_move:function(){
-				var dx = this.boomArea.x - this.x , dy = this.boomArea.y - this.y;
+				var dx = this.boomArea.x - this.x , dy = this.boomArea.y - this.y + 220;
 				this.x = this.x+dx*0.01;
 				this.y = this.y+dy*0.01;
 
@@ -407,7 +413,6 @@
 						c:parseInt(getRandom(128,255))
 					}
 				}
-
 				var fanwei = parseInt(getRandom(300, 400));
 				for(var i=0;i<fragNum;i++){
 					if(style===2){
