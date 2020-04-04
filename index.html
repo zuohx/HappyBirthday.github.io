@@ -161,15 +161,17 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column-reverse;
+
 	}
 	.tip span {
-		width: 30%;
+		margin: 0 30px;
 		position: absolute;
 		top: 530px;
-		font-size: 25px;
+		font-size: 35px;
+		color: #383838;
 	}
 	</style>
-	<title>放烟花</title>
+	<title>奈奈生日快乐</title>
 </head>
 <body onselectstart = "return false">
 	<canvas id='cas' class="bg">浏览器不支持canvas</canvas>
@@ -197,15 +199,23 @@
 	
 	<div class="tip">
 		<span>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日快乐呀，小奈奈。</br>
-			你正是青春年华的时期，一定要过的快快乐乐的。也不用去在乎别人对你说什么。</br>
-			我童年时期也很在乎别人的眼光，后来慢慢长大发现做自己就好啦，自己喜欢怎么样由自己说了算！
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日快乐呀，小奈奈。</br>
+			你正是青春年华的时期，一定要快快乐乐的。也不用去在乎别人说什么。</br>
+			我童年时期也很在意别人的眼光，后来慢慢长大发现做自己就好啦，自己喜欢怎样由自己说了算！</br>
+			你的声音真的好听，你也不用在意我说的话啦，好听就完事了。</br>
+			和你聊天也很开心的，先本想听你声音睡觉，后来发现越听越精神了。</br>
+			我要是和你同年龄一定要和你成为最好的好朋友。</br>
 		</span>
-
-	
 	</div>
 
 	<div style="display:none">
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">奈奈最棒</div>
 		<div class="shape">生日快乐</div>
         <div class="shape">万事如意</div>
         <div class="shape">心想事成</div>
@@ -251,11 +261,12 @@
 			var newTime = new Date();
             if(newTime-lastTime>500+(window.innerHeight-767)/2){
 				var random = Math.random()*100>2?true:false;
-				
 				var x = getRandom(canvas.width/2 , canvas.width*4/5);
 				var y = getRandom(50 , 200);
 
-				if(random){
+				var round = Math.round(Math.random()*10)
+				
+				if(round>4){
 					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
 					bigbooms.push(bigboom)
 				} else {
@@ -325,12 +336,12 @@
 
 		var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60); };
  		
-		canvas.onclick = function(){
-			var x = event.clientX;
-			var y = event.clientY;
-			var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
-			bigbooms.push(bigboom)
-		}
+		<!-- canvas.onclick = function(){ -->
+			<!-- var x = event.clientX; -->
+			<!-- var y = event.clientY; -->
+			<!-- var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y}); -->
+			<!-- bigbooms.push(bigboom) -->
+		<!-- } -->
 
 		// canvas.addEventLisener("touchstart" , function(event){
 		// 	var touch = event.targetTouches[0];
