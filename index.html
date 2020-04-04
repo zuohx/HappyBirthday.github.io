@@ -379,7 +379,7 @@
 				ctx.restore();
 			},
 			_move:function(){
-				var dx = this.boomArea.x - this.x , dy = this.boomArea.y - this.y + 220;
+				var dx = this.boomArea.x - this.x + getRandom(-200 , 100) , dy = this.boomArea.y - this.y + 220;
 				this.x = this.x+dx*0.01;
 				this.y = this.y+dy*0.01;
 
