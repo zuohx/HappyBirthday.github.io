@@ -1,0 +1,574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<style>
+		body{margin:0;padding:0;overflow: hidden;}
+		.city{width:100%;position:fixed;bottom: 0px;z-index: 100;}
+		.city img{width: 100%;}
+	</style>
+	<style>
+	@import url("https://fonts.googleapis.com/css?family=Concert+One|Pacifico");
+	@media screen and (min-width: 670px) {
+		.text {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			flex-direction: column-reverse;
+			position: absolute;
+			top: 50px;
+			background: transparent;
+			<!-- background: linear-gradient(to right, #e2b8f7, #d4bafa, #c7bcfb, #b9befb, #acbff9); -->
+			<!-- cursor: crosshair; -->
+			perspective: 1000px;
+			transform-style: preserve-3d;
+			font-family: "Pacifico",cursive;
+		}
+		.text span {
+			position: fixed;
+			text-align: center;
+			width: 100%;
+			top: 10px;
+			font-size: 70px;
+		}
+		.text h2 {
+			position: fixed;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			font-size: 90px;
+			background: -webkit-linear-gradient(90deg, #e9e6ff 0%, white 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		.text h1 {
+			position: fixed;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+			top: 80px;
+			font-size: 100px;
+			background: -webkit-linear-gradient(0deg, #ceadfc 0%, #a3bbfb 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-family: 'Concert One', cursive;
+			font-weight: 400;
+			z-index: -1;
+			letter-spacing: 6px;
+		}
+		.cake {
+			position: relative;
+			top: 260px;
+			margin: auto;
+			width: 200px;
+			height: 60px;
+			background: #f9fdff;
+			border-radius: 100%;
+			transform: translateZ(100px);
+			box-shadow: 0px 4px 0px #f4f9fd,  0px 8px 0px #dba9ff,  0px 12px 0px #fec3b3,  0px 16px 0px #f7f6fb,  0px 20px 0px #f7f6fb,  0px 24px 0px #f7f6fb, 0px 28px 0px #f7f6fb, 0px 32px 0px #fea0bb, 0px 36px 0px #fea0bb, 0px 40px 0px #9cef9d, 0px 44px 0px #9cef9d,  0px 48px 0px #f7f6fb,  0px 52px 0px #f7f6fb,  0px 56px 0px #f7f6fb,  0px 60px 0px #f7f6fb,  0px 64px 0px #f7f6fb,  0px 68px 0px #dfa5fc,  0px 72px 0px #dfa5fc,  0px 76px 0px #fafffe,  0px 80px 0px #fafffe;
+		}
+		.plate {
+			position: absolute;
+			height: 90px;
+			width: 300px;
+			bottom: -95px;
+			left: 50%;
+			top: 340px;
+			margin-left: -150px;
+			border-radius: 100%;
+			background: radial-gradient(ellipse closest-side at center, #08c7fe 0%, #04d7f2 71%, #02ffd0 100%);
+			box-shadow: 0px 3px 0px #00e2e1, 0px 6px 0px #00d3fb;
+			transform: translateZ(80px);
+		}
+		#flame {
+			position: absolute;
+			z-index: 10;
+		}
+		.candle {
+			position: relative;
+			height: 50px;
+			width: 12px;
+			top: 100px;
+			margin: auto;
+			background: linear-gradient(0deg, #b7f4a7 0%, white 100%);
+			border-radius: 4px;
+			transform: translateZ(120px);
+		}
+		.lit {
+			background: linear-gradient(to bottom, #FFF6D9, #FBC36C);
+			width: 15px;
+			height: 35px;
+			border-top-left-radius: 10px 35px;
+			border-top-right-radius: 10px 35px;
+			border-bottom-right-radius: 10px 10px;
+			border-bottom-left-radius: 10px 10px;
+			top: -34px;
+			margin: auto;
+			box-shadow: 0 0 17px 7px rgba(251, 246, 190, 0.71);
+			transform-origin: bottom;
+			animation: flicker 1s ease-in-out alternate infinite;
+		}
+		.candle1 {
+			position: relative;
+			height: 50px;
+			width: 12px;
+			top: 140px;
+			left: -45px;
+			margin: auto;
+			background: linear-gradient(0deg, #b7f4a7 0%, white 100%);
+			border-radius: 4px;
+			transform: translateZ(120px);
+		}
+		.candle2 {
+			position: relative;
+			height: 50px;
+			width: 12px;
+			top: 188px;
+			left: 45px;
+			margin: auto;
+			background: linear-gradient(0deg, #b7f4a7 0%, white 100%);
+			border-radius: 4px;
+			transform: translateZ(120px);
+		}
+		@keyframes flicker {
+			0% {
+			  transform: skewX(5deg);
+			  box-shadow: 0 0 17px 10px rgba(251, 246, 190, 0.71);
+			}
+			25% {
+			  transform: skewX(-5deg);
+			  box-shadow: 0 0 17px 5px rgba(251, 246, 190, 0.71);
+			}
+			50% {
+			  transform: skewX(10deg);
+			  box-shadow: 0 0 17px 7px rgba(251, 246, 190, 0.71);
+			}
+			75% {
+			  transform: skewX(-10deg);
+			  box-shadow: 0 0 17px 5px rgba(251, 246, 190, 0.71);
+			}
+			100% {
+			  transform: skewX(5deg);
+			  box-shadow: 0 0 17px 10px rgba(251, 246, 190, 0.71);
+			}
+		}
+	}
+	
+
+
+	.tip {
+		display: flex;
+		align-items: center;
+		flex-direction: column-reverse;
+
+	}
+	.tip span {
+		position: absolute;
+		top: 530px;
+		left: 60px;
+		right: 60px;
+		font-size: 35px;
+		color: #383838;
+	}
+	</style>
+	<title>奈奈生日快乐</title>
+</head>
+<body onselectstart = "return false">
+	<canvas id='cas' class="bg">浏览器不支持canvas</canvas>
+	<!-- <div class="city"><img src="city.png" alt="" /></div> -->
+	<!-- <img src="moon.png" alt="" id="moon" style="visibility: hidden;"/> -->
+	<div id="moon" ></div>
+	<div class="text">
+		<h1>Happy Birthday</h1>
+		<h2>Happy Birthday</h2>
+		<span>🎉</span>
+		
+		<div class="candle">
+			<div id="flame" class="lit"></div>
+		</div>
+		<div class="candle1">
+			<div id="flame" class="lit"></div>
+		</div>
+		<div class="candle2">
+			<div id="flame" class="lit"></div>
+		</div>
+		
+		<div class="cake"></div>
+		<div class="plate"></div>
+	</div>
+	
+	<div class="tip">
+		<span>
+			<p style="margin:0;margin-bottom:10px;font-size:60px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日快乐呀，小奈奈。</p>
+			正是你青春年华，一定要快快乐乐。不用去在意别人的看法。</br>
+			慢慢长大你会发现做自己真的挺好的，自己喜欢怎样由自己说了算！那种感觉很棒。</br>
+			</br>
+			和你聊天很开心，本想听你声音入睡，后来发现越听越精神了。(可能就是那种很喜欢的感觉，然后会用心去体会)</br>
+			你的声音真的很好听，喜欢听你说话，听你唱歌。真的好棒。</br>
+			奈奈的歌声简直就是天籁，太美妙了，超喜欢这个声音的呢！</br>
+			关于你想轰轰烈烈的早恋，作为一个过来人对你说：在高中这个阶段也不是不可以，但还是谨慎为好。</br>
+			最后</br>
+			真希望我能回到你这个年纪(白日梦中)
+		</span>
+	</div>
+
+	<div style="display:none">
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">喜欢奈奈</div>
+		<div class="shape">喜欢奈奈</div>
+		<div class="shape">喜欢奈奈</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">奈奈最甜</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">奈奈最甜</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">奈奈最甜</div>
+		<div class="shape">生日快乐</div>
+        <div class="shape">万事如意</div>
+        <div class="shape">心想事成</div>
+        <div class="shape">财源广进</div>
+		<div class="shape">生日快乐</div>
+		<div class="shape">万事如意</div>
+		<div class="shape">财源广进</div>
+		<div class="shape">奈奈最棒</div>
+		<div class="shape">奈奈最甜</div>
+	</div>
+	<script>
+		var canvas = document.getElementById("cas");
+		var ocas = document.createElement("canvas");
+		var octx = ocas.getContext("2d");
+		var ctx = canvas.getContext("2d");
+		ocas.width = canvas.width = window.innerWidth;
+		ocas.height = canvas.height = window.innerHeight;
+		var bigbooms = [];
+	
+		window.onload = function(){
+			initAnimate()
+		}
+
+		function initAnimate(){
+			<!-- drawBg(); -->
+
+			lastTime = new Date();
+			animate();
+		}
+
+		var lastTime;
+		function animate(){
+			ctx.save();
+			var obj = ctx.createLinearGradient(0,0,canvas.width,canvas.height)//(起始点坐标x,起始点坐标y，结束点坐标x,结束点坐标y)
+			obj.addColorStop(0,'#e1b8f7')//起点位置的颜色
+			obj.addColorStop(1,'#acbff9')//终点位置的颜色
+			ctx.fillStyle = obj
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			ctx.restore();
+
+
+			var newTime = new Date();
+            if(newTime-lastTime>500+(window.innerHeight-767)/2){
+				var random = Math.random()*10>2?true:false;
+				var x = getRandom(canvas.width/2 , canvas.width*4/5);
+				var y = getRandom(50 , 200);
+
+				//var round = Math.round(Math.random()*10)
+				
+				if(random){
+					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
+					bigbooms.push(bigboom)
+				} else {
+					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:canvas.width/2 , y:200} , document.querySelectorAll(".shape")[parseInt(getRandom(0, document.querySelectorAll(".shape").length))]);
+					bigbooms.push(bigboom)
+				}
+				lastTime = newTime;
+				<!-- console.log(bigbooms) -->
+			}
+
+			stars.foreach(function(){
+				this.paint();
+			})
+
+			drawMoon();
+
+			bigbooms.foreach(function(index){
+				var that = this;
+				if(!this.dead){
+					this._move();
+					this._drawLight();
+				}
+				else{
+					this.booms.foreach(function(index){
+						if(!this.dead) {
+							this.moveTo(index);
+						}
+						else if(index === that.booms.length-1){
+							bigbooms[bigbooms.indexOf(that)] = null;
+						}
+					})
+				}
+			});
+			
+			raf(animate);
+		}
+
+		function drawMoon(){
+			var moon = document.getElementById("moon");
+			var centerX = canvas.width-200 , centerY = 100 , width = 80;
+			if(moon.complete){
+				ctx.drawImage(moon , centerX , centerY , width , width )
+			}
+			else {
+				moon.onload = function(){
+					ctx.drawImage(moon ,centerX , centerY , width , width)
+				}
+			}
+			<!-- var index = 0; -->
+			<!-- for(var i=0;i<10;i++){ -->
+				<!-- ctx.save(); -->
+				<!-- ctx.beginPath(); -->
+				<!-- ctx.arc(centerX+width/2 , centerY+width/2 , width/2+index , 0 , 2*Math.PI); -->
+				<!-- ctx.fillStyle="rgba(240,219,120,0.005)"; -->
+				<!-- index+=2; -->
+				<!-- ctx.fill(); -->
+				<!-- ctx.restore(); -->
+			<!-- } -->
+			
+		}
+
+		Array.prototype.foreach = function(callback){
+			for(var i=0;i<this.length;i++){
+				if(this[i]!==null) callback.apply(this[i] , [i])
+			}
+		}
+
+		var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60); };
+ 		
+		<!-- canvas.onclick = function(){ -->
+			<!-- var x = event.clientX; -->
+			<!-- var y = event.clientY; -->
+			<!-- var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y}); -->
+			<!-- bigbooms.push(bigboom) -->
+		<!-- } -->
+
+		// canvas.addEventLisener("touchstart" , function(event){
+		// 	var touch = event.targetTouches[0];
+		// 	var x = event.pageX;
+		// 	var y = event.pageY;
+		// 	var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
+		// 	bigbooms.push(bigboom)
+		// })
+
+		var Boom = function(x,r,c,boomArea,shape){
+			this.booms = [];
+			this.x = x;
+			this.y = (canvas.height+r);
+			this.r = r;
+			this.c = c;
+			this.shape = shape || false;
+			this.boomArea = boomArea;
+			this.theta = 0;
+			this.dead = false;
+			this.ba = parseInt(getRandom(80 , 200));
+		}
+		Boom.prototype = {
+			_paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+				ctx.fillStyle = this.c;
+				ctx.fill();
+				ctx.restore();
+			},
+			_move:function(){
+				var dx = this.boomArea.x - this.x + getRandom(-200 , 100) , dy = this.boomArea.y - this.y + 220;
+				this.x = this.x+dx*0.01;
+				this.y = this.y+dy*0.01;
+
+				if(Math.abs(dx)<=this.ba && Math.abs(dy)<=this.ba){
+					if(this.shape){
+						this._shapBoom();
+					}
+					else this._boom();
+					this.dead = true;
+				}
+				else {
+					this._paint();
+				}
+			},
+			_drawLight:function(){
+				ctx.save();
+				ctx.fillStyle = "rgba(255,228,150,0.3)";
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.r+3*Math.random()+1 , 0 , 2*Math.PI);
+				ctx.fill();
+				ctx.restore();
+			},
+			_boom:function(){
+				var fragNum = getRandom(30 , 200);
+				var style = getRandom(0,10)>=5? 1 : 2;
+				var color;
+				if(style===1){
+					color = {
+						a:parseInt(getRandom(128,255)),
+						b:parseInt(getRandom(128,255)),
+						c:parseInt(getRandom(128,255))
+					}
+				}
+				var fanwei = parseInt(getRandom(300, 400));
+				for(var i=0;i<fragNum;i++){
+					if(style===2){
+						color = {
+							a:parseInt(getRandom(128,255)),
+							b:parseInt(getRandom(128,255)),
+							c:parseInt(getRandom(128,255))
+						}
+					}
+					var a = getRandom(-Math.PI, Math.PI);
+					var x = getRandom(0, fanwei) * Math.cos(a) + this.x;
+					var y = getRandom(0, fanwei) * Math.sin(a) + this.y; 
+					var radius = getRandom(1 , 3)
+					var frag = new Frag(this.x , this.y , radius , color , x , y );
+					this.booms.push(frag);
+				}
+			},
+			_shapBoom:function(){
+				var that = this;
+				putValue(ocas , octx , this.shape , 5, function(dots){
+					var dx = canvas.width/2-that.x;
+					var dy = canvas.height/2-that.y;
+					for(var i=0;i<dots.length;i++){
+						color = {a:dots[i].a,b:dots[i].b,c:dots[i].c}
+						var x = dots[i].x;
+						var y = dots[i].y;
+						var radius = 1;
+						var frag = new Frag(that.x , that.y , radius , color , x-dx , y-dy);
+						that.booms.push(frag);
+					}
+				})
+			}
+		}
+
+		function putValue(canvas , context , ele , dr , callback){
+			context.clearRect(0,0,canvas.width,canvas.height);
+			var img = new Image();
+			if(ele.innerHTML.indexOf("img")>=0){
+				img.src = ele.getElementsByTagName("img")[0].src;
+				imgload(img , function(){
+					context.drawImage(img , canvas.width/2 - img.width/2 , canvas.height/2 - img.width/2);
+					dots = getimgData(canvas , context , dr);
+					callback(dots);
+				})
+			}
+			else {
+				var text = ele.innerHTML;
+				context.save();
+				var fontSize =200;
+				context.font = fontSize+"px 宋体 bold";
+				context.textAlign = "center";
+				context.textBaseline = "middle";
+				context.fillStyle = "rgba("+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+" , 1)";
+				context.fillText(text , canvas.width/2 , canvas.height/2);
+				context.restore();
+				dots = getimgData(canvas , context , dr);
+				callback(dots);
+			}
+		}
+
+		function imgload(img , callback){
+			if(img.complete){
+				callback.call(img);
+			}
+			else {
+				img.onload = function(){
+					callback.call(this);
+				}
+			}
+		}
+
+		function getimgData(canvas , context , dr){
+			var imgData = context.getImageData(0,0,canvas.width , canvas.height);
+			context.clearRect(0,0,canvas.width , canvas.height);
+			var dots = [];
+			for(var x=0;x<imgData.width;x+=dr){
+				for(var y=0;y<imgData.height;y+=dr){
+					var i = (y*imgData.width + x)*4;
+					if(imgData.data[i+3] > 128){
+						var dot = {x:x , y:y , a:imgData.data[i] , b:imgData.data[i+1] , c:imgData.data[i+2]};
+						dots.push(dot);
+					}
+				}
+			}
+			return dots;
+		}
+
+		function getRandom(a , b){
+			return Math.random()*(b-a)+a;
+		}
+
+
+		var maxRadius = 1 , stars=[];
+		function drawBg(){
+			for(var i=0;i<100;i++){
+				var r = Math.random()*maxRadius;
+				var x = Math.random()*canvas.width;
+				var y = Math.random()*2*canvas.height - canvas.height;
+				var star = new Star(x , y , r);
+				<!-- stars.push(star); -->
+				<!-- star.paint() -->
+			}
+
+		}
+
+		var Star = function(x,y,r){
+			this.x = x;this.y=y;this.r=r;
+		}
+		Star.prototype = {
+			paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.r , 0 , 2*Math.PI);
+				ctx.fillStyle = "rgba(255,255,255,"+this.r+")";
+				ctx.fill();
+				ctx.restore();
+			}
+		}
+
+		var focallength = 250;
+		var Frag = function(centerX , centerY , radius , color ,tx , ty){
+			this.tx = tx;
+			this.ty = ty;
+			this.x = centerX;
+			this.y = centerY;
+			this.dead = false;
+			this.centerX = centerX;
+			this.centerY = centerY;
+			this.radius = radius;
+			this.color = color;
+		}
+
+		Frag.prototype = {
+			paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.radius , 0 , 2*Math.PI);
+				ctx.fillStyle = "rgba("+this.color.a+","+this.color.b+","+this.color.c+",1)";
+				ctx.fill()
+				ctx.restore();
+			},
+			moveTo:function(index){
+				this.ty = this.ty+0.3;
+				var dx = this.tx - this.x , dy = this.ty - this.y;
+				this.x = Math.abs(dx)<0.1 ? this.tx : (this.x+dx*0.1);
+				this.y = Math.abs(dy)<0.1 ? this.ty : (this.y+dy*0.1);
+				if(dx===0 && Math.abs(dy)<=80){
+					this.dead = true;
+				}
+				this.paint();
+			}
+		}
+	</script>
+</body>
+</html>
